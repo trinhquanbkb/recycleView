@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,8 @@ public class RecycleAdapterView extends RecyclerView.Adapter<RecycleAdapterView.
     @Override
     public void onBindViewHolder(@NonNull RecycleAdapterView.DataViewHolder holder, int position) {
         String name = personList.get(position).getName();
+        int image = personList.get(position).getImage();
+        holder.imageView.setBackgroundResource(image);
         holder.textView.setText(name);
     }
 
@@ -69,9 +72,11 @@ public class RecycleAdapterView extends RecyclerView.Adapter<RecycleAdapterView.
     //2. class này dùng để bắt được view item
     public static class DataViewHolder extends RecyclerView.ViewHolder{
         private TextView textView;
+        private ImageView imageView;
         public DataViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.textView);
+            imageView = itemView.findViewById(R.id.imageView);
         }
     }
 }
